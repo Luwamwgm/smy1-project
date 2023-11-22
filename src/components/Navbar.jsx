@@ -3,12 +3,13 @@ import { Link, NavLink } from "react-router-dom";
 import "./Navbar.css";
 
 export const Navbar = () => {
+  //export default function Navbar() {
   return (
     <nav>
       <ul>
         <li>
           <Link to="/" className="title">
-            Website
+            SMY Children's Books and Toys Store
           </Link>
         </li>
         <li>
