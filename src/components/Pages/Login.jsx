@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 //import { NavLink, useNavigate } from "react-router-dom";
 //import { Navbar } from "./components/Navbar";
-export const Login = () => {
+export const Login = (props) => {
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
 
@@ -12,7 +12,7 @@ export const Login = () => {
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <label for="email">email</label>
+        <label htmlFor="email">email</label>
         <input
           value={email}
           onChange={(e) => setEmail(e.target.value)}
@@ -21,7 +21,7 @@ export const Login = () => {
           id="email"
           name="email"
         />
-        <label for="password">password</label>
+        <label htmlFor="password">password</label>
         <input
           value={pass}
           onChange={(e) => setPass(e.target.value)}
@@ -32,7 +32,9 @@ export const Login = () => {
         />
         <button>Log In</button>
       </form>
-      <button>Do not have an account? Create an account!</button>
+      <button onClick={() => props.onFormSwitch["Signup"]}>
+        Do not have an account? Create an account!
+      </button>
     </>
   );
 };

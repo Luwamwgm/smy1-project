@@ -1,68 +1,43 @@
-/*import React from "react";
-import { Navbar } from "./components/Navbar";
+import React, { useState } from "react";
 
-export const Signup = () => {
-  return (
-    <>
-      <Navbar />
-      <h1>sign up </h1>
-    </>
-  );
-};*/
-
-import { useState } from "react";
-//import { NavLink } from "react-router-dom";
-//import { NavLink, useNavigate } from "react-router-dom";
-//import { Navbar } from "./components/Navbar";
-
-export const Signup = () => {
+export const Signup = (props) => {
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [pass, setPass] = useState("");
+  const [name, setName] = useState("");
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(email);
+  };
   return (
     <>
-      <main>
-        <section>
-          <div>
-            <div>
-              <h1>TODO App</h1>
-              <form>
-                <div>
-                  <label htmlFor="email-address">Email address</label>
-                  <input
-                    type="email"
-                    label="Email address"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                    placeholder="Email address"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="password">Password</label>
-                  <input
-                    type="password"
-                    label="Create password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
-                    placeholder="Password"
-                  />
-                </div>
-
-                <button type="submit">Sign up</button>
-              </form>
-
-              <p>
-                Already have an account? <NavLink to="/login">Sign in</NavLink>
-              </p>
-            </div>
-          </div>
-        </section>
-      </main>
+      <form onSubmit={handleSubmit}>
+        <label htmlFor="name"> Full Name</label>
+        <input value={name} type="text" Placeholder=" full name" />
+        <label htmlFor="email">email</label>
+        <input
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          type="email"
+          placeholder="sample@example.com"
+          id="email"
+          name="email"
+        />
+        <label htmlFor="password">password</label>
+        <input
+          value={pass}
+          onChange={(e) => setPass(e.target.value)}
+          type="password"
+          placeholder="**********"
+          id="email"
+          name="email"
+        />
+        <button>Sign Up</button>
+      </form>
+      <button onClick={() => props.onFormSwitch["Login"]}>
+        {" "}
+        Already have an account? Login here!
+      </button>
     </>
   );
 };
-
-export default Signup;
