@@ -1,7 +1,9 @@
 import React, { useState } from "react";
-//import { NavLink, useNavigate } from "react-router-dom";
-//import { Navbar } from "./components/Navbar";
-export const Login = (props) => {
+//import "./Login.css";
+import { NavLink, useNavigate } from "react-router-dom";
+
+export const Login = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
 
@@ -11,30 +13,36 @@ export const Login = (props) => {
   };
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="email">email</label>
-        <input
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          type="email"
-          placeholder="sample@example.com"
-          id="email"
-          name="email"
-        />
-        <label htmlFor="password">password</label>
-        <input
-          value={pass}
-          onChange={(e) => setPass(e.target.value)}
-          type="password"
-          placeholder="**********"
-          id="email"
-          name="email"
-        />
-        <button>Log In</button>
-      </form>
-      <button onClick={() => props.onFormSwitch["Signup"]}>
-        Do not have an account? Create an account!
-      </button>
+      <div>
+        <form onSubmit={handleSubmit}>
+          <label htmlFor="email">email</label>
+          <input
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            type="email"
+            required
+            placeholder="sample@example.com"
+            id="email"
+            name="email"
+          />
+          <br />
+          <label htmlFor="password">password</label>
+          <input
+            value={pass}
+            onChange={(e) => setPass(e.target.value)}
+            type="password"
+            required
+            placeholder="**********"
+            id="password"
+            name="password"
+          />
+          <br />
+          <button type="submit">Log In</button>
+        </form>
+        <p className="text-sm text-white text-center">
+          No account yet? <NavLink to="/signup">Sign up</NavLink>
+        </p>
+      </div>
     </>
   );
 };

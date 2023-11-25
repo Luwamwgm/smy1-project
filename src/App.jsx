@@ -13,10 +13,10 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 //import { NavLink, useNavigate } from "react-router-dom";
 
 function App() {
-  const [currentForm, setCurrentForm] = useState("login");
-  const toggleForm = (formName) => {
-    setCurrentForm(formName);
-  };
+  //const [currentForm, setCurrentForm] = useState("login");
+  //const toggleForm = (formName) => {
+  //setCurrentForm(formName);
+
   return (
     <div className="App">
       <Navbar />
@@ -24,26 +24,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
-        <Route
-          path="/login"
-          element={
-            currentForm === "login" ? (
-              <Login onFormSwitch={toggleForm} />
-            ) : (
-              <Signup />
-            )
-          }
-        />
-        <Route
-          path="/signup"
-          element={
-            currentForm === "signup" ? (
-              <Signup onFormSwitch={currentForm} />
-            ) : (
-              <Login />
-            )
-          }
-        />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
       </Routes>
     </div>
   );
