@@ -8,8 +8,8 @@ import { About } from "./components/Pages/About";
 import { Home } from "./components/Pages/Home";
 import { Login } from "./components/Pages/Login";
 import { Signup } from "./components/Pages/Signup";
-//import ErrorPage from "./components/Page/error";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import ErrorPage from "./components/Pages/error";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 //import { NavLink, useNavigate } from "react-router-dom";
 
 function App() {
@@ -26,6 +26,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="*" element={<ErrorPage />} />
       </Routes>
     </div>
   );

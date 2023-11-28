@@ -15,7 +15,7 @@ export const About = () => {
           good to get items affordable as those item sold will be cheaper than a
           new ones.
         </p>
-        <img src="/public/book1.jpg" />
+        <img src="/book1.jpg" />
         <label>Books</label>
         <p>
           {" "}
@@ -25,7 +25,7 @@ export const About = () => {
           someone who may use it and whom those need toys and books in lower
           price or for free would be benefited.
         </p>
-        <img src="/public/itspottytime.jpg" />
+        <img src="/itspottytime.jpg" />
       </div>
     </>
   );

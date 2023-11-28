@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
+import "./Login.css";
 
 export const Signup = () => {
   const [email, setEmail] = useState("");
@@ -11,9 +12,10 @@ export const Signup = () => {
     console.log(email);
   };
   return (
-    <>
-      <div>
-        <form onSubmit={handleSubmit}>
+    <div id="signup-page">
+      <div className="container-form">
+        <h2 className="title-signup">Signup</h2>
+        <form className="sign-form" onSubmit={handleSubmit}>
           <label htmlFor="name"> Full Name</label>
           <input
             value={name}
@@ -50,6 +52,6 @@ export const Signup = () => {
           Already have an account? <NavLink to="/login">Sign in</NavLink>
         </p>
       </div>
-    </>
+    </div>
   );
 };
