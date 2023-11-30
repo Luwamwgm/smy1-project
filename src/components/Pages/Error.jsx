@@ -1,8 +1,6 @@
-import React from "react";
+import { useRouteError, NavLink } from "react-router-dom";
 
-import { useRouteError } from "react-router-dom";
-
-export default function ErrorPage() {
+export default function Error() {
   const error = useRouteError();
   console.error(error);
 
@@ -14,7 +12,7 @@ export default function ErrorPage() {
         <i>{error.statusText || error.message}</i>
       </p>
       <p>
-        <a href="/">Back to home page</a>
+        <NavLink to="/">Back to home page</NavLink>
       </p>
     </div>
   );

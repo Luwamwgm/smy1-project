@@ -2,7 +2,7 @@ import React from "react";
 //import { NavLink, useNavigate } from "react-router-dom";
 //import { Navbar } from "./components/Navbar";
 
-export const About = () => {
+const About = () => {
   return (
     <>
       <div>
@@ -30,3 +30,4 @@ export const About = () => {
     </>
   );
 };
+export default About;

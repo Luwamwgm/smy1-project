@@ -1,21 +1,39 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import "./Login.css";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { firebaseAuth } from "./firebase-config";
 
-export const Signup = () => {
+const Signup = () => {
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
   const [name, setName] = useState("");
 
-  const handleSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
-    console.log(email);
+    console.log("email:", email);
+    console.log("password:", pass);
+
+    await createUserWithEmailAndPassword(firebaseAuth, email, pass)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        console.log(user);
+        navigate("/login");
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorCode, errorMessage);
+        // ..
+      });
   };
   return (
     <div id="signup-page">
       <div className="container-form">
         <h2 className="title-signup">Signup</h2>
-        <form className="sign-form" onSubmit={handleSubmit}>
+        <form className="sign-form">
           <label htmlFor="name"> Full Name</label>
           <input
             value={name}
@@ -46,7 +64,7 @@ export const Signup = () => {
             name="email"
           />
           <br />
-          <button type="submit">Sign Up</button>
+          <button onClick={onSubmit}>Sign Up</button>
         </form>
         <p>
           Already have an account? <NavLink to="/login">Sign in</NavLink>
@@ -55,3 +73,4 @@ export const Signup = () => {
     </div>
   );
 };
+export default Signup;

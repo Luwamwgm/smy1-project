@@ -1,22 +1,38 @@
 import React, { useState } from "react";
 import "./Login.css";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { NavLink, useNavigate } from "react-router-dom";
+import { firebaseAuth } from "./firebase-config";
 
-export const Login = () => {
-  const navigate = useNavigate();
+const Login = () => {
+  //const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
 
-  const handleSubmit = (e) => {
+  const onLogin = (e) => {
     e.preventDefault();
-    console.log(email);
+    signInWithEmailAndPassword(firebaseAuth, email, password)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        const navigate = useNavigate();
+        //navigate(-1) || navigate("/selling");
+        navigate("/selling");
+        console.log(user.id);
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorCode, errorMessage);
+      });
   };
+
   return (
     <>
       <div id="login-page">
         <div className="container-form">
           <h2 className="title-log">Login</h2>
-          <form className="log-form" onSubmit={handleSubmit}>
+          <form className="log-form">
             <label htmlFor="email">email</label>
             <input
               value={email}
@@ -39,7 +55,7 @@ export const Login = () => {
               name="password"
             />
 
-            <button type="submit">Log In</button>
+            <button onClick={onLogin}>Log In</button>
           </form>
           <p className="text-sm text-white text-center">
             No account yet? <NavLink to="/signup">Sign up</NavLink>
@@ -51,3 +67,4 @@ export const Login = () => {
     </>
   );
 };
+export default Login;
